@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Add Hotel Chain</title>
+  </head>
+  <body>
+    <h2>Add Hotel Chain</h2>
+    <form th:action="@{/hotelchains}" th:object="${hotelChain}" method="post">
+      <input type="hidden" th:field="*{chainId}" />
+      Hotel Chain Name: <input type="text" th:field="*{name}" /><br/>
+      <input type="submit" value="Submit" />
+    </form>
+    <a href="/hotelchains">Back to Hotel Chains</a>
+  </body>
+</html>

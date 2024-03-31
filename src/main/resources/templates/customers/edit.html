@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Add/Edit Customer</title>
+  </head>
+  <body>
+  <h2>Add/Edit Customer</h2>
+  <form th:action="@{/customers/update}" th:object="${customer}" method="post">
+    <input type="hidden" th:field="*{customerId}" />
+    First Name: <input type="text" th:field="*{firstName}" /><br/>
+    Last Name: <input type="text" th:field="*{lastName}" /><br/>
+    Id Number: <input type="text" th:field="*{idNumber}" /><br/>
+    ID Type:
+    <select th:field="*{typeOfId}">
+      <option value="SSN">SSN</option>
+      <option value="SIN">SIN</option>
+      <option value="License">License</option>
+      <option value="Other">Other</option>
+    </select><br/>
+    <input type="submit" value="Update" />
+  </form>
+  <a href="/customers">Back to Customers List</a>
+  </body>
+</html>

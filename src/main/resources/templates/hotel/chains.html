@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Hotel Chains</title>
+</head>
+<body>
+<h2>Hotel Chains</h2>
+<div>
+  <a href="/hotelchains/add">Add New Hotel Chain</a>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Number of Hotels</th>
+      <th>Delete</th>
+    </tr>
+    <ul th:each="hotelChain : ${hotelChains}">
+      <tr>
+        <td th:text="${hotelChain.chainId}"></td>
+        <td th:text="${hotelChain.name}"></td>
+        <td th:text="${hotelChain.noOfHotels}"></td>
+        <td><a th:href="@{/hotelchains/delete/{id}(id=${hotelChain.chainId})}" onclick="return confirm('Are you sure?')">Delete</a></td>
+      </tr>
+    </ul>
+  </table>
+</div>
+<a href="/employee">Back to Employee Home</a>
+</body>
+</html>

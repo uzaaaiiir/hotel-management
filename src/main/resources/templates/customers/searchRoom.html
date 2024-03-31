@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Customer Page</title>
+</head>
+<body>
+<h1>Customer Page</h1>
+<div>
+  <h1>Search for Available Rooms</h1>
+  <form action="/searchRooms" method="get">
+    Check-in Date: <input type="date" name="startDate" /> <br/>
+    Check-out Date: <input type="date" name="endDate" /> <br/>
+    Capacity: <input type="number" name="capacity" min="1" /> <br/>
+    City: <input type="text" name="city" /> <br/>
+    Hotel Chain: <input type="text" name="chainName" /> <br/>
+    Category (Rating): <input type="number" name="rating" min="1" max="5" /> <br/>
+    Max Price: <input type="number" name="maxPrice" step="0.01" /> <br/>
+    <input type="submit" value="Search" />
+  </form>
+</div>
+<div th:if="${rooms != null}">
+  <table>
+    <tr>
+      <th>Hotel Chain</th>
+      <th>Hotel Id</th>
+      <th>Location</th>
+      <th>Room Number</th>
+      <th>Price</th>
+      <th>Amenities</th>
+      <th>Capacity</th>
+      <th>Problems and Damages</th>
+    </tr>
+    <div th:each="room : ${rooms}">
+      <tr>
+        <td th:text="${room.hotelChain}"></td>
+        <td th:text="${room.hotelId}"></td>
+        <td th:text="${room.city}"></td>
+        <td th:text="${room.roomNumber}"></td>
+        <td th:text="${room.price}"></td>
+        <td th:text="${room.amenities}"></td>
+        <td th:text="${room.capacity}"></td>
+        <td th:text="${room.problemsAndDamages}"></td>
+      </tr>
+    </div>
+  </table>
+  <a href="/customer">Back to Customer Home</a>
+</div>
+</body>
+</html>

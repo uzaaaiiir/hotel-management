@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add/Edit Hotel</title>
+</head>
+<body>
+<h2>Add/Edit Hotel</h2>
+<form th:action="@{/hotels/update}" th:object="${hotel}" method="post">
+  <input type="hidden" th:field="*{hotelId}" />
+  Address: <input type="text" th:field="*{address}" /><br/>
+  City: <input type="text" th:field="*{city}" /><br/>
+  Email Address: <input type="email" th:field="*{emailAddress}" /><br/>
+  Rating: <input type="number" th:field="*{rating}" /><br/>
+  Hotel Chain: <span th:text="${hotelChain.name}"></span>
+  <br/>
+  <input type="submit" value="Update" />
+</form>
+<a href="/hotels">Back to Hotels List</a>
+</body>
+</html>
